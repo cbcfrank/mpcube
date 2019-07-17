@@ -1,0 +1,33 @@
+{
+    "name": "cbcfrank/minicub",
+    "description": "composite miniapp api for php developer",
+    "type": "library",
+    "require": {
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-simplexml": "*",
+        "ext-libxml": "*",
+        "monolog/monolog": "^1.24",
+        "doctrine/cache": "^1.5.4"
+    },
+    "license": "Apache",
+    "authors": [
+        {
+            "name": "Frank Chan",
+            "email": "cbcfrank@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Minicub\\Wechat\\": "src/Wechat",
+            "Minicub\\Alipay\\": "src/Alipay"
+        }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}
