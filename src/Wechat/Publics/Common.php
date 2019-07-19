@@ -102,7 +102,7 @@ trait Common
         return $data;
     }
 
-    private function curlPostWxMedia($url, $full_file_path, $extra_field=array())
+    private function curlPostWxMedia($url, $full_file_path, array $extra_field=array(), $file_field='media')
     {
         //初始化
         $ch = curl_init();
@@ -127,7 +127,7 @@ trait Common
         curl_setopt($ch, CURLOPT_POST, 1);
 
         //post数据，使用@符号，curl就会认为是有文件上传
-        $post_data = array('media'=>new \CURLFile(realpath($full_file_path)));
+        $post_data = array($file_field=>new \CURLFile(realpath($full_file_path)));
 
         //如果需要加入其他字段
         if ($extra_field) {

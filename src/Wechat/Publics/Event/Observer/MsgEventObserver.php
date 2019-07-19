@@ -42,6 +42,45 @@ class MsgEventObserver implements Observer
                 case EventType::VIEW :
                     $msg['_remark'] = ParamsRemark::EVENT_MENU_VIEW;
                     break;
+                case EventType::USER_PAY_FROM_PAY_CELL :
+                    $msg['_remark'] = ParamsRemark::EVENT_USER_PAY_FROM_PAY_CELL;
+                    break;
+                case EventType::CARD_PASS_CHECK :
+                    $msg['_remark'] = ParamsRemark::EVENT_CARD_PASS_CHECK;
+                    break;
+                case EventType::CARD_NOT_PASS_CHECK :
+                    $msg['_remark'] = ParamsRemark::EVENT_CARD_NOT_PASS_CHECK;
+                    break;
+                case EventType::USER_GET_CARD :
+                    $msg['_remark'] = ParamsRemark::EVENT_USER_GET_CARD;
+                    break;
+                case EventType::USER_GIFTING_CARD :
+                    $msg['_remark'] = ParamsRemark::EVENT_USER_GIFTING_CARD;
+                    break;
+                case EventType::USER_DEL_CARD :
+                    $msg['_remark'] = ParamsRemark::EVENT_USER_DEL_CARD;
+                    break;
+                case EventType::USER_CONSUME_CARD :
+                    $msg['_remark'] = ParamsRemark::EVENT_USER_CONSUME_CARD;
+                    break;
+                case EventType::USER_VIEW_CARD :
+                    $msg['_remark'] = ParamsRemark::EVENT_USER_VIEW_CARD;
+                    break;
+                case EventType::USER_ENTER_SESSION_FROM_CARD :
+                    $msg['_remark'] = ParamsRemark::EVENT_USER_ENTER_SESSION_FROM_CARD;
+                    break;
+                case EventType::UPDATE_MEMBER_CARD :
+                    $msg['_remark'] = ParamsRemark::EVENT_UPDATE_MEMBER_CARD;
+                    break;
+                case EventType::CARD_SKU_REMIND :
+                    $msg['_remark'] = ParamsRemark::EVENT_CARD_SKU_REMIND;
+                    break;
+                case EventType::CARD_PAY_ORDER :
+                    $msg['_remark'] = ParamsRemark::EVENT_CARD_PAY_ORDER;
+                    break;
+                case EventType::SUBMIT_MEMBERCARD_USER_INFO :
+                    $msg['_remark'] = ParamsRemark::EVENT_SUBMIT_MEMBERCARD_USER_INFO;
+                    break;
             }
 
             $this->callback($msg);

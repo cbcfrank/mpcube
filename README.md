@@ -11,14 +11,10 @@
 │   └── Wechat //微信端
 │        └── Publics //公众号
 │             ├── Menu //菜单相关功能
-│             │                  ├─ aps    //短信监控相关代码
-│             │                  ├─ common //公用
-│             │                  └─ dkm    //代扣监控相关代码
+│             │    ├─ ParamsRemark.php    //参数说明
+│             │    ├─ Menu.php            //操作对象
+│             │    └─ xxxxType.php        //枚举类
 │             ├── ... //其他相关功能
-│             ├── db
-│             │    └── migration
-│             │          ├── V1__init_database.sql  // flyway相关配置见下方详细描述
-│             │          └── V2__alter_cmm_dkm_should_send_sum.sql
 │             ├── AccessToken.php  //公众号全局获取access_token类
 │             ├── Common.php       //通用类方法 trait
 │             ├── Errcode.php      //错误码类
@@ -41,8 +37,9 @@
  * [事件及消息](docs/03_EVENT_MESSAGE.md)
  * [素材](docs/04_MATERIAL.md)
  * [模板消息](docs/05_TEMPLATE.md)
- * 客服
+ * [客服](docs/06_CUSTOMSERVICE.md)
  * [网页授权](docs/07_WEB.md)
+ * [卡券](docs/08_CARD.md)
  
 
 #### 运行、启动、调试方式

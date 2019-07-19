@@ -38,4 +38,13 @@ class MessageType
 
     //菜单消息
     const MSGMENU = 'msgmenu';
+
+    //卡券
+    const WXCARD = 'wxcard';
+
+    //小程序
+    const MINIPROGRAMPAGE = 'miniprogrampage';
+
+    //消息转发到客服
+    const TRANSFER_CUSTOMER_SERVICE = 'transfer_customer_service';
 }

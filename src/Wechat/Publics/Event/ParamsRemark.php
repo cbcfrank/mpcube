@@ -83,6 +83,14 @@ class ParamsRemark
         'MsgId'=>array('memo'=>'消息id，64位整型'),
     );
 
+    const MSG_TRANSFER_CUSTOMER_SERVICE = array(
+        'ToUserName'=>array('memo'=>'接收方帐号（收到的OpenID）'),
+        'FromUserName'=>array('memo'=>'开发者微信号'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型）'),
+        'MsgType'=>array('memo'=>'transfer_customer_service'),
+        'KfAccount'=>array('memo'=>'指定会话接入的客服账号'),
+    );
+
     //关注/取消关注事件
     const EVENT_SUB_UNSUB = array(
         'ToUserName'=>array('memo'=>'开发者微信号'),
@@ -178,4 +186,184 @@ class ParamsRemark
         'MsgID'=>array('memo'=>'消息id'),
         'Status'=>array('memo'=>'发送状态为发送失败（非用户拒绝）'),
     );
+
+    // region 卡券事件
+
+    //买单事件推送
+    const  EVENT_USER_PAY_FROM_PAY_CELL = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型）'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'事件类型，User_pay_from_pay_cell(微信买单事件)'),
+        'CardId'=>array('memo'=>'卡券ID'),
+        'UserCardCode'=>array('memo'=>'卡券Code码'),
+        'TransId'=>array('memo'=>'微信支付交易订单号（只有使用买单功能核销的卡券才会出现）'),
+        'LocationId'=>array('memo'=>'门店ID，当前卡券核销的门店ID（只有通过卡券商户助手和买单核销时才会出现）'),
+        'Fee'=>array('memo'=>'实付金额，单位为分'),
+        'OriginalFee'=>array('memo'=>'应付金额，单位为分'),
+    );
+
+    //审核事件推送 - 通过
+    const EVENT_CARD_PASS_CHECK = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型）'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，card_pass_check(卡券通过审核)'),
+        'CardId'=>array('memo'=>'卡券ID'),
+        'RefuseReason'=>array('memo'=>'审核不通过原因'),
+    );
+
+    //审核事件推送 - 不通过
+    const EVENT_CARD_NOT_PASS_CHECK = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型）'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，card_not_pass_check（卡券未通过审核）'),
+        'CardId'=>array('memo'=>'卡券ID'),
+        'RefuseReason'=>array('memo'=>'审核不通过原因'),
+    );
+
+    //领取事件推送
+    const EVENT_USER_GET_CARD = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'领券方帐号（一个OpenID）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型）'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，user_get_card(用户领取卡券)'),
+        'CardId'=>array('memo'=>'卡券ID'),
+        'IsGiveByFriend'=>array('memo'=>'是否为转赠领取，1代表是，0代表否。'),
+        'FriendUserName'=>array('memo'=>'当IsGiveByFriend为1时填入的字段，表示发起转赠用户的openid'),
+        'UserCardCode'=>array('memo'=>'code序列号'),
+        'OldUserCardCode'=>array('memo'=>'为保证安全，微信会在转赠发生后变更该卡券的code号，该字段表示转赠前的code'),
+        'OuterStr'=>array('memo'=>'领取场景值，用于领取渠道数据统计。可在生成二维码接口及添加Addcard接口中自定义该字段的字符串值'),
+        'IsRestoreMemberCard'=>array('memo'=>'用户删除会员卡后可重新找回，当用户本次操作为找回时，该值为1，否则为0'),
+        'UnionId'=>array('memo'=>'领券用户的UnionId'),
+    );
+
+    //转赠事件推送
+    const EVENT_USER_GIFTING_CARD = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'领券方帐号（一个OpenID）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型）'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，user_gifting_card(用户转赠卡券)'),
+        'CardId'=>array('memo'=>'卡券ID'),
+        'IsGiveByFriend'=>array('memo'=>'是否为转赠领取，1代表是，0代表否。'),
+        'FriendUserName'=>array('memo'=>'接收卡券用户的openid'),
+        'UserCardCode'=>array('memo'=>'code序列号'),
+        'IsReturnBack'=>array('memo'=>'是否转赠退回，0代表不是，1代表是。'),
+        'IsChatRoom'=>array('memo'=>'是否是群转赠'),
+    );
+
+    //删除事件推送
+    const EVENT_USER_DEL_CARD = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型）'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，user_del_card(用户删除卡券)'),
+        'CardId'=>array('memo'=>'卡券ID'),
+        'UserCardCode'=>array('memo'=>'code序列号。自定义code及非自定义code的卡券被领取后都支持事件推送。'),
+    );
+
+    //核销事件推送
+    const EVENT_USER_CONSUME_CARD = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型）'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，user_consume_card(核销事件)'),
+        'CardId'=>array('memo'=>'卡券ID'),
+        'UserCardCode'=>array('memo'=>'卡券Code码。'),
+        'ConsumeSource'=>array('memo'=>'核销来源。支持开发者统计API核销（FROM_API）、公众平台核销（FROM_MP）、卡券商户助手核销（FROM_MOBILE_HELPER）（核销员微信号）。'),
+        'LocationName'=>array('memo'=>'门店名称，当前卡券核销的门店名称（只有通过自助核销和买单核销时才会出现该字段）。'),
+        'StaffOpenId'=>array('memo'=>'核销该卡券核销员的openid（只有通过卡券商户助手核销时才会出现）。'),
+        'VerifyCode'=>array('memo'=>'自助核销时，用户输入的验证码。'),
+        'RemarkAmount'=>array('memo'=>'自助核销 时 ，用户输入的备注金额。'),
+        'OuterStr'=>array('memo'=>'开发者发起核销时传入的自定义参数，用于进行核销渠道统计。'),
+    );
+
+    //进入会员卡事件推送
+    const EVENT_USER_VIEW_CARD = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型）'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，user_view_card(用户点击会员卡)'),
+        'CardId'=>array('memo'=>'卡券ID'),
+        'UserCardCode'=>array('memo'=>'商户自定义code值。非自定code推送为空串。。'),
+        'OuterStr'=>array('memo'=>'商户自定义二维码渠道参数，用于标识本次扫码打开会员卡来源来自于某个渠道值的二维码'),
+    );
+
+    //从卡券进入公众号会话事件推送
+    const EVENT_USER_ENTER_SESSION_FROM_CARD = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型）'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，user_enter_session_from_card(用户从卡券进入公众号会话)'),
+        'CardId'=>array('memo'=>'卡券ID'),
+        'UserCardCode'=>array('memo'=>'Code码'),
+    );
+
+    //会员卡内容更新事件
+    const EVENT_UPDATE_MEMBER_CARD = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型）'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，update_member_card(会员卡内容更新）'),
+        'CardId'=>array('memo'=>'卡券ID'),
+        'UserCardCode'=>array('memo'=>'Code码'),
+        'ModifyBonus'=>array('memo'=>'变动的积分值'),
+        'ModifyBalance'=>array('memo'=>'变动的余额值'),
+    );
+
+    //库存报警事件
+    const EVENT_CARD_SKU_REMIND = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方，微信'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型）'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，card_sku_remind库存报警'),
+        'CardId'=>array('memo'=>'卡券ID'),
+        'Detail'=>array('memo'=>'报警详细信息'),
+    );
+
+    //券点流水详情事件
+    const EVENT_CARD_PAY_ORDER = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方，微信'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型）'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，card_pay_order券点流水详情事件'),
+        'OrderId'=>array('memo'=>'本次推送对应的订单号'),
+        'Status'=>array('memo'=>'本次订单号的状态,ORDER_STATUS_WAITING 等待支付 ORDER_STATUS_SUCC 支付成功 ORDER_STATUS_FINANCE_SUCC 加代币成功 ORDER_STATUS_QUANTITY_SUCC 加库存成功 ORDER_STATUS_HAS_REFUND 已退币 ORDER_STATUS_REFUND_WAITING 等待退币确认 ORDER_STATUS_ROLLBACK 已回退,系统失败 ORDER_STATUS_HAS_RECEIPT 已开发票'),
+        'CreateOrderTime'=>array('memo'=>'购买券点时，支付二维码的生成时间'),
+        'PayFinishTime'=>array('memo'=>'购买券点时，实际支付成功的时间'),
+        'Desc'=>array('memo'=>'支付方式，一般为微信支付充值'),
+        'FreeCoinCount'=>array('memo'=>'剩余免费券点数量'),
+        'PayCoinCount'=>array('memo'=>'剩余付费券点数量'),
+        'RefundFreeCoinCount'=>array('memo'=>'本次变动的免费券点数量'),
+        'RefundPayCoinCount'=>array('memo'=>'本次变动的付费券点数量'),
+        'OrderType'=>array('memo'=>'所要拉取的订单类型 ORDER_TYPE_SYS_ADD 平台赠送券点 ORDER_TYPE_WXPAY 充值券点 ORDER_TYPE_REFUND 库存未使用回退券点 ORDER_TYPE_REDUCE 券点兑换库存 ORDER_TYPE_SYS_REDUCE 平台扣减'),
+        'Memo'=>array('memo'=>'系统备注，说明此次变动的缘由，如开通账户奖励、门店奖励、核销奖励以及充值、扣减。'),
+        'ReceiptInfo'=>array('memo'=>'所开发票的详情'),
+    );
+
+    //会员卡激活事件推送
+    const EVENT_SUBMIT_MEMBERCARD_USER_INFO = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型）'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，submit_membercard_user_info'),
+        'CardId'=>array('memo'=>'卡券ID'),
+        'UserCardCode'=>array('memo'=>'卡券Code码'),
+    );
+
+    // endregion
 }

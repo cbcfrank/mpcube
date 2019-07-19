@@ -11,7 +11,7 @@ class Message
 
     private $_msg = array();
 
-    // region 消息体
+    // region 客服消息 - 消息体组合
 
     //文本消息
     //发送文本消息时，支持插入跳小程序的文字链
@@ -82,7 +82,9 @@ class Message
         $this->_msg = array(
             "touser" => $touser,
             "msgtype" => MessageType::NEWS,
-            MessageType::NEWS => compact('title', 'description', 'musicurl', 'hqmusicurl', 'thumb_media_id'),
+            MessageType::NEWS => array(
+                'articles' => compact('title', 'description', 'musicurl', 'hqmusicurl', 'thumb_media_id')
+            ),
         );
         return $this;
     }
@@ -104,16 +106,63 @@ class Message
         return 'todo'; //todo
     }
 
-    //
+    //发送卡券
+    public function setWxCardMsg($touser, $card_id)
+    {
+        $this->_msg = array(
+            "touser" => $touser,
+            "msgtype" => MessageType::WXCARD,
+            MessageType::WXCARD => compact('card_id'),
+        );
+        return $this;
+    }
 
+    //发送小程序卡片（要求小程序与公众号已关联）
+    public function setMiniProgramPageMsg($touser, $title, $appid, $pagepath, $thumb_media_id)
+    {
+        $this->_msg = array(
+            "touser" => $touser,
+            "msgtype" => MessageType::MINIPROGRAMPAGE,
+            MessageType::MINIPROGRAMPAGE => compact('title', 'appid', 'pagepath', 'thumb_media_id'),
+        );
+        return $this;
+    }
+
+    //请注意，如果需要以某个客服帐号来发消息（在微信6.0.2及以上版本中显示自定义头像），
+    //则需在JSON数据包的后半部分加入customservice参数，例如发送文本消息则改为：
+    public function setCustomServiceKfAccountIfNeed($kf_account)
+    {
+        if (empty($this->_msg)) return false;
+
+        $this->_msg['customservice'] = compact('kf_account');
+
+        return $this;
+    }
 
     // endregion
+
+    // region 客服消息
 
     //客服接口-发消息
     public function customSend()
     {
         $url = $this->WechatApiBaseURL.'cgi-bin/message/custom/send?access_token='.$this->access_token;
-
-        return $this->httpRespToArray($this->curlPost($url, $this->_msg));
+        return $this->httpRespToArray($this->curlPost($url, $this->_msg), ParamsRemark::CUSTOMSERVICE_MESSAGE_CUSTOM_SEND_REQ);
     }
+
+    //客服输入状态
+    //开发者可通过调用“客服输入状态”接口，返回客服当前输入状态给用户。
+    //此接口需要客服消息接口权限。
+    //如果不满足发送客服消息的触发条件，则无法下发输入状态。
+    //下发输入状态，需要客服之前30秒内跟用户有过消息交互。
+    //在输入状态中（持续15s），不可重复下发输入态。
+    //在输入状态中，如果向用户下发消息，会同时取消输入状态。
+    public function customTyping($touser, $command)
+    {
+        $url = $this->WechatApiBaseURL.'cgi-bin/message/custom/typing?access_token='.$this->access_token;
+        $arr = compact('touser', 'command');
+        return $this->httpRespToArray($this->curlPost($url, $arr), ParamsRemark::CUSTOMSERVICE_MESSAGE_CUSTOM_TYPING_REQ);
+    }
+
+    // endregion
 }

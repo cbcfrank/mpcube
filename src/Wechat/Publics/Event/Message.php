@@ -150,5 +150,30 @@ class Message extends Subject
         return sprintf($xmltpl, $toUserName, $fromUserName, time(), MessageType::MUSIC, $title, $description, $musicUrl, $hqMusicUrl, $thumbMediaId);
     }
 
+    //消息转发到客服
+    //用户在等待队列中时，用户发送的消息仍然会被推送至开发者填写的url上。
+    //这里特别要注意，只针对微信用户发来的消息才进行转发，而对于其他任何事件（比如菜单点击、地理位置上报等）都不应该转接，
+    //否则客服在客服系统上就会看到一些无意义的消息了。
+    //
+    //如果您有多个客服人员同时登录了客服并且开启了自动接入在进行接待，每一个客户的消息转发给客服时，多客服系统会将客户分配给其中一个客服人员。
+    //如果您希望将某个客户的消息转给指定的客服来接待，可以在返回transfer_customer_service消息时附上TransInfo信息指定一个客服帐号。
+    // 需要注意，如果指定的客服没有接入能力(不在线、没有开启自动接入或者自动接入已满)，该用户会被直接接入到指定客服，不再通知其它客服，
+    //不会被其他客服接待。建议在指定客服时，先查询客服的接入能力（获取在线客服接待信息接口），指定到有能力接入的客服，保证客户能够及时得到服务。
+    public static function setRespTransferCustomerServiceXML($fromUserName, $toUserName, $KfAccount='')
+    {
+        if (!empty($KfAccount)) {
+            $kfAccount = "<TransInfo><KfAccount><![CDATA[{$KfAccount}]]></KfAccount></TransInfo>";
+        }
+
+        $xmltpl = "<xml>
+                      <ToUserName><![CDATA[%s]]></ToUserName>
+                      <FromUserName><![CDATA[%s]]></FromUserName>
+                      <CreateTime>%s</CreateTime>
+                      <MsgType><![CDATA[%s]]></MsgType>
+                      {$kfAccount}
+                    </xml>";
+        return sprintf($xmltpl, $toUserName, $fromUserName, time(), MessageType::TRANSFER_CUSTOMER_SERVICE);
+    }
+
     // endregion
 }
