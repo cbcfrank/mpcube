@@ -3,6 +3,8 @@ namespace Minicub\Wechat\Publics\Event;
 
 class ParamsRemark
 {
+    // region 接收的普通消息
+
     //文本消息
     const MSG_TEXT = array(
         'ToUserName'=>array('memo'=>'开发者微信号'),
@@ -91,6 +93,10 @@ class ParamsRemark
         'KfAccount'=>array('memo'=>'指定会话接入的客服账号'),
     );
 
+    // endregion
+
+    // region 普通事件
+
     //关注/取消关注事件
     const EVENT_SUB_UNSUB = array(
         'ToUserName'=>array('memo'=>'开发者微信号'),
@@ -154,6 +160,10 @@ class ParamsRemark
         'EventKey'=>array('memo'=>'事件KEY值，设置的跳转URL'),
     );
 
+    // endregion
+
+    // region 模板消息
+
     //模版消息发送任务完成后 - 送达成功时
     const EVENT_TEMPLATESENDJOBFINISH_SUCCESS = array(
         'ToUserName'=>array('memo'=>'公众号微信号'),
@@ -186,6 +196,8 @@ class ParamsRemark
         'MsgID'=>array('memo'=>'消息id'),
         'Status'=>array('memo'=>'发送状态为发送失败（非用户拒绝）'),
     );
+
+    // endregion
 
     // region 卡券事件
 
@@ -363,6 +375,72 @@ class ParamsRemark
         'Event'=>array('memo'=>'Event	事件类型，submit_membercard_user_info'),
         'CardId'=>array('memo'=>'卡券ID'),
         'UserCardCode'=>array('memo'=>'卡券Code码'),
+    );
+
+    // endregion
+
+    // region 微信认证事件推送
+
+    //资质认证成功（此时立即获得接口权限）
+    const EVENT_QUALIFICATION_VERIFY_SUCCESS = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID，此时发送方是系统帐号）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型），时间戳'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，qualification_verify_success'),
+        'ExpiredTime'=>array('memo'=>'有效期 (整形)，指的是时间戳，将于该时间戳认证过期'),
+    );
+
+    //资质认证失败
+    const EVENT_QUALIFICATION_VERIFY_FAIL = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID，此时发送方是系统帐号）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型），时间戳'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，qualification_verify_fail'),
+        'FailTime'=>array('memo'=>'失败发生时间 (整形)，时间戳'),
+        'FailReason'=>array('memo'=>'认证失败的原因'),
+    );
+
+    //名称认证成功（即命名成功）
+    const EVENT_NAMING_VERIFY_SUCCESS = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID，此时发送方是系统帐号）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型），时间戳'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，naming_verify_success'),
+        'ExpiredTime'=>array('memo'=>'有效期 (整形)，指的是时间戳，将于该时间戳认证过期'),
+    );
+
+    //名称认证失败（这时虽然客户端不打勾，但仍有接口权限）
+    const EVENT_NAMING_VERIFY_FAIL = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID，此时发送方是系统帐号）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型），时间戳'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，naming_verify_fail'),
+        'FailTime'=>array('memo'=>'失败发生时间 (整形)，时间戳'),
+        'FailReason'=>array('memo'=>'认证失败的原因'),
+    );
+
+    //年审通知
+    const EVENT_ANNUAL_RENEW = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID，此时发送方是系统帐号）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型），时间戳'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，annual_renew，提醒公众号需要去年审了'),
+        'ExpiredTime'=>array('memo'=>'有效期 (整形)，指的是时间戳，将于该时间戳认证过期，需尽快年审'),
+    );
+
+    //认证过期失效通知审通知
+    const EVENT_VERIFY_EXPIRED = array(
+        'ToUserName'=>array('memo'=>'开发者微信号'),
+        'FromUserName'=>array('memo'=>'发送方帐号（一个OpenID，此时发送方是系统帐号）'),
+        'CreateTime'=>array('memo'=>'消息创建时间 （整型），时间戳'),
+        'MsgType'=>array('memo'=>'消息类型，event'),
+        'Event'=>array('memo'=>'Event	事件类型，verify_expired'),
+        'ExpiredTime'=>array('memo'=>'有效期 (整形)，指的是时间戳，表示已于该时间戳认证过期，需要重新发起微信认证'),
     );
 
     // endregion

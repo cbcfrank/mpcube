@@ -81,6 +81,24 @@ class MsgEventObserver implements Observer
                 case EventType::SUBMIT_MEMBERCARD_USER_INFO :
                     $msg['_remark'] = ParamsRemark::EVENT_SUBMIT_MEMBERCARD_USER_INFO;
                     break;
+                case EventType::QUALIFICATION_VERIFY_SUCCESS :
+                    $msg['_remark'] = ParamsRemark::EVENT_QUALIFICATION_VERIFY_SUCCESS;
+                    break;
+                case EventType::QUALIFICATION_VERIFY_FAIL :
+                    $msg['_remark'] = ParamsRemark::EVENT_QUALIFICATION_VERIFY_FAIL;
+                    break;
+                case EventType::NAMING_VERIFY_SUCCESS :
+                    $msg['_remark'] = ParamsRemark::EVENT_NAMING_VERIFY_SUCCESS;
+                    break;
+                case EventType::NAMING_VERIFY_FAIL :
+                    $msg['_remark'] = ParamsRemark::EVENT_NAMING_VERIFY_FAIL;
+                    break;
+                case EventType::ANNUAL_RENEW :
+                    $msg['_remark'] = ParamsRemark::EVENT_ANNUAL_RENEW;
+                    break;
+                case EventType::VERIFY_EXPIRED :
+                    $msg['_remark'] = ParamsRemark::EVENT_VERIFY_EXPIRED;
+                    break;
             }
 
             $this->callback($msg);

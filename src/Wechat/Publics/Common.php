@@ -5,6 +5,7 @@ namespace Minicub\Wechat\Publics;
 trait Common
 {
     private $WechatApiBaseURL = 'https://api.weixin.qq.com/';
+    private $WechatMpBaseURL = 'https://mp.weixin.qq.com/';
     private $access_token = '';
 
     public function setAccessToken($access_token)

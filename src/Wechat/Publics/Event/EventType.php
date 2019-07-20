@@ -70,4 +70,26 @@ class EventType
     const SUBMIT_MEMBERCARD_USER_INFO = 'submit_membercard_user_info';
 
     // endregion
+
+    // region 微信认证事件推送
+
+    //资质认证成功（此时立即获得接口权限）
+    const QUALIFICATION_VERIFY_SUCCESS = 'qualification_verify_success';
+
+    //资质认证失败
+    const QUALIFICATION_VERIFY_FAIL = 'qualification_verify_fail';
+
+    //名称认证成功（即命名成功）
+    const NAMING_VERIFY_SUCCESS = 'naming_verify_success';
+
+    //名称认证失败（这时虽然客户端不打勾，但仍有接口权限）
+    const NAMING_VERIFY_FAIL = 'naming_verify_fail';
+
+    //年审通知
+    const ANNUAL_RENEW = 'annual_renew';
+
+    //认证过期失效通知审通知
+    const VERIFY_EXPIRED = 'verify_expired';
+
+    // endregion
 }

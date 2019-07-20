@@ -1,10 +1,12 @@
 <?php
-namespace Minicub\Wechat\Publics;
+namespace Minicub\Wechat\Publics\Utils;
 
+use Minicub\Wechat\Publics\Common;
+use Minicub\Wechat\Publics\Singleton;
 
 class Network
 {
-    use Common;
+    use Common, Singleton;
 
     //获取微信服务器IP地址
     public function getCallbackIP()
