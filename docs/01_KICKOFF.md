@@ -6,7 +6,7 @@
 #### 设置运行时文件存放目录
 
 > $rt = Runtime::getInstance();
-> $rt->dir = 'D:\git\github\minicub\runtime';
+> $rt->dir = 'D:\git\github\mpcube\runtime';
 > var_dump($rt->dir);
 
 #### 保存token文件

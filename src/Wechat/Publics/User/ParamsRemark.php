@@ -1,5 +1,5 @@
 <?php
-namespace Minicub\Wechat\Publics\User;
+namespace Mpcube\Wechat\Publics\User;
 
 class ParamsRemark
 {

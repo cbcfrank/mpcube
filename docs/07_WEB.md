@@ -10,7 +10,7 @@ function testAuthorize()
     global $appid;
 
     $auth = Oauth2::getInstance();
-    $redirect_url = 'http://www.youdomain.com/minicub/test/Wechat/Publics/web.php?_ijt=du8vh3rtpbi64dmhf87b9952qs';
+    $redirect_url = 'http://www.youdomain.com/mpcube/test/Wechat/Publics/web.php?_ijt=du8vh3rtpbi64dmhf87b9952qs';
     
     //只想获取openid，静默
     //$auth->authorize($appid, $redirect_url, Oauth2Scope::snsapi_base, array('im'=>'state'));

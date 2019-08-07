@@ -5,6 +5,9 @@
  * 创建场景二维码
 
 ```php
+use Mpcube\Wechat\Publics\AccessToken;
+use Mpcube\Wechat\Publics\Utils\Qrcode;
+
 //临时场景
 global $access_token;
 
@@ -16,6 +19,9 @@ var_dump($ret);
  * 展示二维码
 
 ```php
+use Mpcube\Wechat\Publics\AccessToken;
+use Mpcube\Wechat\Publics\Utils\Qrcode;
+
 global $access_token;
 
 $qrcode = Qrcode::getInstance();
@@ -26,6 +32,8 @@ var_dump($ret);
 #### 长链接转短链接
 
 ```php
+use Mpcube\Wechat\Publics\AccessToken;
+use Mpcube\Wechat\Publics\Utils\ShortURL;
 global $access_token;
 
 $surl = ShortURL::getInstance();

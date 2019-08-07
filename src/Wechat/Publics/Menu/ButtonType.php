@@ -6,7 +6,7 @@
  * Time: 15:59
  */
 
-namespace Minicub\Wechat\Publics\Menu;
+namespace Mpcube\Wechat\Publics\Menu;
 
 class ButtonType
 {

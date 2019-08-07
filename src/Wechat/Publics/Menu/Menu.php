@@ -1,9 +1,9 @@
 <?php
 
-namespace Minicub\Wechat\Publics\Menu;
+namespace Mpcube\Wechat\Publics\Menu;
 
-use Minicub\Wechat\Publics\Common;
-use Minicub\Wechat\Publics\Singleton;
+use Mpcube\Wechat\Publics\Common;
+use Mpcube\Wechat\Publics\Singleton;
 
 class Menu
 {

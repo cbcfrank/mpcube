@@ -1,5 +1,5 @@
 <?php
-namespace Minicub\Wechat\Publics\Web;
+namespace Mpcube\Wechat\Publics\Web;
 
 class Oauth2Scope
 {

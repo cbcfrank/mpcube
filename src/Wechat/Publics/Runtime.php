@@ -6,7 +6,7 @@
  * Time: 12:27
  */
 
-namespace Minicub\Wechat\Publics;
+namespace Mpcube\Wechat\Publics;
 
 
 class Runtime

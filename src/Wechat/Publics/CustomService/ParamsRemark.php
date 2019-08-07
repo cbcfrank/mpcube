@@ -1,5 +1,5 @@
 <?php
-namespace Minicub\Wechat\Publics\CustomService;
+namespace Mpcube\Wechat\Publics\CustomService;
 
 class ParamsRemark
 {

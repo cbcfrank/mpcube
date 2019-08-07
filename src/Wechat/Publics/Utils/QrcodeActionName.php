@@ -1,5 +1,5 @@
 <?php
-namespace Minicub\Wechat\Publics\Utils;
+namespace Mpcube\Wechat\Publics\Utils;
 
 //二维码类型
 class QrcodeActionName

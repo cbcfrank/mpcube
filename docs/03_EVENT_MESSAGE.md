@@ -5,6 +5,10 @@
 > 如果默认接收所有推送消息，只需要在需要处理的地方设置回掉函数即可
 
 ```php
+use Mpcube\Wechat\Publics\AccessToken;
+use Mpcube\Wechat\Publics\Event\Message;
+use Mpcube\Wechat\Publics\Event\Observer\MsgTextObserver;
+
 $message = Message::getInstance();
 $message->receive();
 
@@ -21,6 +25,10 @@ function msgTextCallback($msgarr)
 > 如果设置单独特定的回调信息的函数 或者 静态类方法，则需单独处理
 
 ```php
+use Mpcube\Wechat\Publics\AccessToken;
+use Mpcube\Wechat\Publics\Event\Message;
+use Mpcube\Wechat\Publics\Event\Observer\MsgTextObserver;
+
 $message = Message::getInstance();
 $mtos = MsgTextObserver::getInstance();
 $mtos->setCallback('TestMsg::msgTextCallback');
@@ -37,6 +45,10 @@ class TestMsg
 > 或者实例对象方法
 
 ```php
+use Mpcube\Wechat\Publics\AccessToken;
+use Mpcube\Wechat\Publics\Event\Message;
+use Mpcube\Wechat\Publics\Event\Observer\MsgTextObserver;
+
 class TestMsg
 {
     public function msgTextCallback($msgarr)

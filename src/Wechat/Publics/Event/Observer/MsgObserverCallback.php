@@ -1,5 +1,5 @@
 <?php
-namespace Minicub\Wechat\Publics\Event\Observer;
+namespace Mpcube\Wechat\Publics\Event\Observer;
 
 trait MsgObserverCallback
 {

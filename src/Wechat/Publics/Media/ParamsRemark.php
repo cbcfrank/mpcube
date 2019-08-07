@@ -1,6 +1,6 @@
 <?php
 
-namespace Minicub\Wechat\Publics\Media;
+namespace Mpcube\Wechat\Publics\Media;
 
 
 class ParamsRemark

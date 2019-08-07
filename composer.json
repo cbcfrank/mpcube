@@ -1,5 +1,5 @@
 {
-    "name": "cbcfrank/minicub",
+    "name": "cbcfrank/mpcube",
     "description": "composite miniapp api for php developer",
     "type": "library",
     "require": {
@@ -20,8 +20,8 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Minicub\\Wechat\\": "src/Wechat",
-            "Minicub\\Alipay\\": "src/Alipay"
+            "Mpcube\\Wechat\\": "src/Wechat",
+            "Mpcube\\Alipay\\": "src/Alipay"
         }
     },
     "repositories": {

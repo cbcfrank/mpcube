@@ -1,5 +1,5 @@
 <?php
-namespace Minicub\Wechat\Publics\Event;
+namespace Mpcube\Wechat\Publics\Event;
 
 class MessageType
 {

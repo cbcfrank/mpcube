@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Minicub\Wechat\Publics\Event\Observer;
+namespace Mpcube\Wechat\Publics\Event\Observer;
 
 
-use Minicub\Wechat\Publics\Event\Observer;
-use Minicub\Wechat\Publics\Event\MessageType;
-use Minicub\Wechat\Publics\Event\ParamsRemark;
-use Minicub\Wechat\Publics\Singleton;
+use Mpcube\Wechat\Publics\Event\Observer;
+use Mpcube\Wechat\Publics\Event\MessageType;
+use Mpcube\Wechat\Publics\Event\ParamsRemark;
+use Mpcube\Wechat\Publics\Singleton;
 
 class MsgLinkObserver implements Observer
 {

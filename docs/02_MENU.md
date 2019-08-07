@@ -3,6 +3,9 @@
 #### 创建菜单
 
 ```php
+use Mpcube\Wechat\Publics\Menu\Button;
+use Mpcube\Wechat\Publics\Menu\Menu;
+
 $token = AccessToken::getInstance();
 $access_token = $token->setCacheDriver(AccessToken::CACHE_DRIVER_FILESYSTEM)->setFilePath()->getToken($GLOBALS["appid"], $GLOBALS["appsecret"]);
 
@@ -17,4 +20,31 @@ $ret = $menu->setAccessToken($access_token)->create($arr);
 //exit(Menu::$access_token);
 //$ret = Menu::create($arr);
 var_dump($ret);
+```
+
+#### 获取菜单
+
+```php
+use Mpcube\Wechat\Publics\Menu\Menu;
+
+$token = AccessToken::getInstance();
+$access_token = $token->setCacheDriver(AccessToken::CACHE_DRIVER_FILESYSTEM)->setFilePath()->getToken($GLOBALS["appid"], $GLOBALS["appsecret"]);
+
+$menu = Menu::getInstance();
+$ret = $menu->setAccessToken($access_token)->get();
+var_dump($ret);
+```
+
+#### 删除菜单
+
+```php
+use Mpcube\Wechat\Publics\Menu\Menu;
+
+$token = AccessToken::getInstance();
+$access_token = $token->setCacheDriver(AccessToken::CACHE_DRIVER_FILESYSTEM)->setFilePath()->getToken($GLOBALS["appid"], $GLOBALS["appsecret"]);
+
+$menu = Menu::getInstance();
+$ret = $menu->setAccessToken($access_token)->delete();
+var_dump($ret);
+
 ```

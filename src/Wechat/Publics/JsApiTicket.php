@@ -1,5 +1,5 @@
 <?php
-namespace Minicub\Wechat\Publics;
+namespace Mpcube\Wechat\Publics;
 
 class JsApiTicket
 {

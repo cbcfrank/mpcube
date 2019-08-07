@@ -1,5 +1,5 @@
 <?php
-namespace Minicub\Wechat\Publics\Card;
+namespace Mpcube\Wechat\Publics\Card;
 
 class CardType
 {

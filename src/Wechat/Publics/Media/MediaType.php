@@ -6,7 +6,7 @@
  * Time: 18:31
  */
 
-namespace Minicub\Wechat\Publics\Media;
+namespace Mpcube\Wechat\Publics\Media;
 
 //媒体文件类型
 class MediaType

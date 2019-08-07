@@ -6,9 +6,9 @@
  * Time: 17:40
  */
 
-namespace Minicub\Wechat\Publics\Menu;
+namespace Mpcube\Wechat\Publics\Menu;
 
-use Minicub\Wechat\Publics\Singleton;
+use Mpcube\Wechat\Publics\Singleton;
 
 /**
  * 自定义菜单接口可实现多种类型按钮

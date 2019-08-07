@@ -1,16 +1,16 @@
 <?php
-namespace Minicub\Wechat\Publics\Event;
+namespace Mpcube\Wechat\Publics\Event;
 
-use Minicub\Wechat\Publics\Common;
-use Minicub\Wechat\Publics\Event\Observer\MsgEventObserver;
-use Minicub\Wechat\Publics\Event\Observer\MsgImageObserver;
-use Minicub\Wechat\Publics\Event\Observer\MsgLinkObserver;
-use Minicub\Wechat\Publics\Event\Observer\MsgLocationObserver;
-use Minicub\Wechat\Publics\Event\Observer\MsgShortVideoObserver;
-use Minicub\Wechat\Publics\Event\Observer\MsgTextObserver;
-use Minicub\Wechat\Publics\Event\Observer\MsgVideoObserver;
-use Minicub\Wechat\Publics\Event\Observer\MsgVoiceObserver;
-use Minicub\Wechat\Publics\Singleton;
+use Mpcube\Wechat\Publics\Common;
+use Mpcube\Wechat\Publics\Event\Observer\MsgEventObserver;
+use Mpcube\Wechat\Publics\Event\Observer\MsgImageObserver;
+use Mpcube\Wechat\Publics\Event\Observer\MsgLinkObserver;
+use Mpcube\Wechat\Publics\Event\Observer\MsgLocationObserver;
+use Mpcube\Wechat\Publics\Event\Observer\MsgShortVideoObserver;
+use Mpcube\Wechat\Publics\Event\Observer\MsgTextObserver;
+use Mpcube\Wechat\Publics\Event\Observer\MsgVideoObserver;
+use Mpcube\Wechat\Publics\Event\Observer\MsgVoiceObserver;
+use Mpcube\Wechat\Publics\Singleton;
 
 class Message extends Subject
 {

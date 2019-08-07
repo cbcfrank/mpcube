@@ -1,6 +1,6 @@
 <?php
 
-namespace Minicub\Wechat\Publics\Menu;
+namespace Mpcube\Wechat\Publics\Menu;
 
 
 class ParamsRemark

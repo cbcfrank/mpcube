@@ -1,8 +1,8 @@
 <?php
-namespace Minicub\Wechat\Publics\Utils;
+namespace Mpcube\Wechat\Publics\Utils;
 
-use Minicub\Wechat\Publics\Common;
-use Minicub\Wechat\Publics\Singleton;
+use Mpcube\Wechat\Publics\Common;
+use Mpcube\Wechat\Publics\Singleton;
 
 class Qrcode
 {

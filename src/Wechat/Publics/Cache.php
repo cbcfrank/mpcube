@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Minicub\Wechat\Publics;
+namespace Mpcube\Wechat\Publics;
 
 
 use Doctrine\Common\Cache\FilesystemCache;
