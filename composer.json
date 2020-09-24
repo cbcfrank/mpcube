@@ -20,8 +20,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Mpcube\\Wechat\\": "src/Wechat",
-            "Mpcube\\Alipay\\": "src/Alipay"
+            "Mpcube\\": "src"
         }
     },
     "repositories": {

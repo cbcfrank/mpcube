@@ -1,8 +1,6 @@
 <?php
 
-
-namespace Mpcube\Wechat\Publics;
-
+namespace Mpcube\Common;
 
 use Doctrine\Common\Cache\FilesystemCache;
 use Doctrine\Common\Cache\MemcacheCache;
@@ -34,15 +32,11 @@ trait Cache
         return $this->cache_driver_current;
     }
 
-    public function setFilePath($rel_path='')
+    public function setFilePath($rel_path='cache/wechat')
     {
         if ($this->getCacheDriver()==self::CACHE_DRIVER_FILESYSTEM) {
 
-            if (empty($rel_path)) {
-                $this->_file_path = Runtime::getInstance()->dir.'cache/wechat';
-            } else {
-                $this->_file_path = $rel_path;
-            }
+            $this->_file_path = Runtime::getInstance()->dir.$rel_path;
             $this->_cache = new FilesystemCache($this->_file_path);
 
             return $this;

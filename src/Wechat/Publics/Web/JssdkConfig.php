@@ -8,10 +8,12 @@ class JssdkConfig
 {
     use Common, Singleton;
 
-    public function getSignPackage($appid, $jsapiTicket)
+    public function getSignPackage($appid, $jsapiTicket, $url=null)
     {
         // 注意 URL 一定要动态获取，不能 hardcode.
-        $url = $_SERVER["REQUEST_SCHEME"].'://'.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+        if (empty($url)) {
+            $url = $_SERVER["REQUEST_SCHEME"].'://'.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];;
+        }
 
         $timestamp = time();
         $nonceStr = $this->createNonceStr();
