@@ -2,11 +2,16 @@
 
 namespace Mpcube\Wechat\Publics;
 
-class Errcode
+use Mpcube\Common\AbstractErrcode;
+
+class Errcode extends AbstractErrcode
 {
-    private static $_errcode = array(
+    public function __construct()
+    {
+        $this->_errcode = array(
             -1 => '系统繁忙，此时请开发者稍候再试',
             0 => '请求成功',
+            20002 => 'POST参数非法',
             40001 => '获取 access_token 时 AppSecret 错误，或者 access_token 无效。请开发者认真比对 AppSecret 的正确性，或查看是否正在为恰当的公众号调用接口',
             40002 => '不合法的凭证类型',
             40003 => '不合法的 OpenID ，请开发者确认 OpenID （该用户）是否已关注公众号，或是否是其他公众号的 OpenID',
@@ -99,6 +104,7 @@ class Errcode
             45016 => '系统分组，不允许修改',
             45017 => '分组名字过长',
             45018 => '分组数量超过上限',
+            45029 => '生成码个数总和到达最大个数限制',
             45046 => '该card_id已经设置了买单功能，不可变更为自助核销功能，设置冲突',
             45047 => '客服接口下行条数超过上限',
             45056 => '创建的标签数过多，请注意不能超过100个',
@@ -171,6 +177,20 @@ class Errcode
             65416 => '查询参数不合法',
             65417 => '查询时间段超出限制',
             87009 => '无效的签名',
+            92000 => '该经营资质已添加，请勿重复添加',
+            92002 => '附近地点添加数量达到上线，无法继续添加',
+            92003 => '地点已被其它小程序占用',
+            92004 => '附近功能被封禁',
+            92005 => '地点正在审核中',
+            92006 => '地点正在展示小程序',
+            92007 => '地点审核失败',
+            92008 => '程序未展示在该地点',
+            93009 => '小程序未上架或不可见',
+            93010 => '地点不存在',
+            93011 => '个人类型小程序不可用',
+            93012 => '非普通类型小程序（门店小程序、小店小程序等）不可用',
+            93013 => '从腾讯地图获取地址详细信息失败',
+            93014 => '同一资质证件号重复添加',
             9001001 => 'POST 数据参数不合法',
             9001002 => '远端服务不可用',
             9001003 => 'Ticket 不合法',
@@ -199,37 +219,38 @@ class Errcode
             9001035 => '设备申请参数不合法',
             9001036 => '查询起始值 begin 不合法',
         );
-
-    /**
-     * 解析错误编码
-     * @param array $resp
-     * @return array
-     */
-    public static function parseErrcodeByArray(array $resp)
-    {
-        if (isset($resp['errcode']) && isset(self::$_errcode[$resp['errcode']])) {
-            $resp['_remark']['errmsg'] = self::$_errcode[$resp['errcode']];
-        } elseif (isset($resp['errcode'])) {
-            $resp['_remark']['errmsg'] = '未查找到对应错误';
-        }
-
-        return $resp;
     }
 
-    /**
-     * 解析string类型错误编码
-     * @param $respstr
-     * @return array|bool
-     */
-    public static function parseErrcodeByString($respstr)
-    {
-        $arr = json_decode($respstr, true);
-
-        if(!is_array($arr)) {
-            return false;
-        }
-
-        return self::parseErrcodeByArray($arr);
-    }
+//    /**
+//     * 解析错误编码
+//     * @param array $resp
+//     * @return array
+//     */
+//    public static function parseErrcodeByArray(array $resp)
+//    {
+//        if (isset($resp['errcode']) && isset(self::$_errcode[$resp['errcode']])) {
+//            $resp['_remark']['errmsg'] = self::$_errcode[$resp['errcode']];
+//        } elseif (isset($resp['errcode'])) {
+//            $resp['_remark']['errmsg'] = '未查找到对应错误';
+//        }
+//
+//        return $resp;
+//    }
+//
+//    /**
+//     * 解析string类型错误编码
+//     * @param $respstr
+//     * @return array|bool
+//     */
+//    public static function parseErrcodeByString($respstr)
+//    {
+//        $arr = json_decode($respstr, true);
+//
+//        if(!is_array($arr)) {
+//            return false;
+//        }
+//
+//        return self::parseErrcodeByArray($arr);
+//    }
 
 }

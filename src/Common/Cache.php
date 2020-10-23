@@ -32,11 +32,28 @@ trait Cache
         return $this->cache_driver_current;
     }
 
-    public function setFilePath($rel_path='cache/wechat')
+//    public function setFilePath($rel_path='cache/wechat')
+//    {
+//        if ($this->getCacheDriver()==self::CACHE_DRIVER_FILESYSTEM) {
+//
+//            $this->_file_path = Runtime::getInstance()->dir.$rel_path;
+//            $this->_cache = new FilesystemCache($this->_file_path);
+//
+//            return $this;
+//        }
+//
+//        return false;
+//    }
+
+    public function setFilePath($rel_path='')
     {
         if ($this->getCacheDriver()==self::CACHE_DRIVER_FILESYSTEM) {
 
-            $this->_file_path = Runtime::getInstance()->dir.$rel_path;
+            if (empty($rel_path)) {
+                $this->_file_path = Runtime::getInstance()->dir.'cache/wechat';
+            } else {
+                $this->_file_path = $rel_path;
+            }
             $this->_cache = new FilesystemCache($this->_file_path);
 
             return $this;

@@ -2,9 +2,13 @@
 
 namespace Mpcube\Wxwork\Internal;
 
-class Errcode
+use Mpcube\Common\AbstractErrcode;
+
+class Errcode extends AbstractErrcode
 {
-    private static $_errcode = array(
+    public function __construct()
+    {
+        $this->_errcode = array(
             -1 => '系统繁忙，此时请开发者稍候再试',
             0 => '请求成功',
             40001 => '获取 access_token 时 AppSecret 错误，或者 access_token 无效。请开发者认真比对 AppSecret 的正确性，或查看是否正在为恰当的公众号调用接口',
@@ -199,37 +203,38 @@ class Errcode
             9001035 => '设备申请参数不合法',
             9001036 => '查询起始值 begin 不合法',
         );
-
-    /**
-     * 解析错误编码
-     * @param array $resp
-     * @return array
-     */
-    public static function parseErrcodeByArray(array $resp)
-    {
-        if (isset($resp['errcode']) && isset(self::$_errcode[$resp['errcode']])) {
-            $resp['_remark']['errmsg'] = self::$_errcode[$resp['errcode']];
-        } elseif (isset($resp['errcode'])) {
-            $resp['_remark']['errmsg'] = '未查找到对应错误';
-        }
-
-        return $resp;
     }
-
-    /**
-     * 解析string类型错误编码
-     * @param $respstr
-     * @return array|bool
-     */
-    public static function parseErrcodeByString($respstr)
-    {
-        $arr = json_decode($respstr, true);
-
-        if(!is_array($arr)) {
-            return false;
-        }
-
-        return self::parseErrcodeByArray($arr);
-    }
+//
+//    /**
+//     * 解析错误编码
+//     * @param array $resp
+//     * @return array
+//     */
+//    public static function parseErrcodeByArray(array $resp)
+//    {
+//        if (isset($resp['errcode']) && isset(self::$_errcode[$resp['errcode']])) {
+//            $resp['_remark']['errmsg'] = self::$_errcode[$resp['errcode']];
+//        } elseif (isset($resp['errcode'])) {
+//            $resp['_remark']['errmsg'] = '未查找到对应错误';
+//        }
+//
+//        return $resp;
+//    }
+//
+//    /**
+//     * 解析string类型错误编码
+//     * @param $respstr
+//     * @return array|bool
+//     */
+//    public static function parseErrcodeByString($respstr)
+//    {
+//        $arr = json_decode($respstr, true);
+//
+//        if(!is_array($arr)) {
+//            return false;
+//        }
+//
+//        return self::parseErrcodeByArray($arr);
+//    }
 
 }

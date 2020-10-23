@@ -8,20 +8,31 @@
 
 ```text
 ├── src  //源代码
-│   └── Wechat //微信端
-│        └── Publics //公众号
-│             ├── Menu //菜单相关功能
-│             │    ├─ ParamsRemark.php    //参数说明
-│             │    ├─ Menu.php            //操作对象
-│             │    └─ xxxxType.php        //枚举类
-│             ├── ... //其他相关功能
-│             ├── AccessToken.php  //公众号全局获取access_token类
-│             ├── Common.php       //通用类方法 trait
-│             ├── Errcode.php      //错误码类
-│             ├── IPList.php       //微信服务器白名单获取类
-│             ├── MagicGetSet.php  //魔术方法 trait
-│             ├── Runtime.php      //运行时函数
-│             └── Singleton.php    //单例方法 trait
+│   ├── Wechat //微信端
+│   │    └── Publics //公众号
+│   │         ├── Menu //菜单相关功能
+│   │         │    ├─ ParamsRemark.php    //参数说明
+│   │         │    ├─ Menu.php            //操作对象
+│   │         │    └─ xxxxType.php        //枚举类
+│   │         ├── ... //其他相关功能
+│   │         ├── AccessToken.php  //公众号全局获取access_token类
+│   │         ├── Common.php       //通用类方法 trait
+│   │         ├── Errcode.php      //错误码类
+│   │         ├── IPList.php       //微信服务器白名单获取类
+│   │         ├── MagicGetSet.php  //魔术方法 trait
+│   │         ├── Runtime.php      //运行时函数
+│   │         └── Singleton.php    //单例方法 trait
+│   │
+│   ├── Wepay //微信支付
+│   │    ├── Qrcode  //付款码支付
+│   │    ├── Jsapi   //JSAPI支付
+│   │    ├── Miniapp //小程序支付
+│   │    ├── Native  //Native支付
+│   │    ├── App     //APP支付
+│   │    ├── H5      //H5支付
+│   │    └── Face    //刷脸支付
+│   │
+│   └── Wxwork //企业微信
 │
 ├── runtime //运行时目录
 │  

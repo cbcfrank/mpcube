@@ -1,6 +1,8 @@
 <?php
 namespace Mpcube\Wechat\Publics;
 
+use Mpcube\Common\Singleton;
+
 class JsApiTicket
 {
     use Common, Singleton, Cache;

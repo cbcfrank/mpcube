@@ -8,7 +8,6 @@
 
 namespace Mpcube\Common;
 
-
 class Runtime
 {
     use Singleton, MagicGetSet;

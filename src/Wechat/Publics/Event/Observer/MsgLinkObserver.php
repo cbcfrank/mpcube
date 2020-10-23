@@ -7,7 +7,8 @@ namespace Mpcube\Wechat\Publics\Event\Observer;
 use Mpcube\Wechat\Publics\Event\Observer;
 use Mpcube\Wechat\Publics\Event\MessageType;
 use Mpcube\Wechat\Publics\Event\ParamsRemark;
-use Mpcube\Wechat\Publics\Singleton;
+//use Mpcube\Wechat\Publics\Singleton;
+use Mpcube\Common\Singleton;
 
 class MsgLinkObserver implements Observer
 {

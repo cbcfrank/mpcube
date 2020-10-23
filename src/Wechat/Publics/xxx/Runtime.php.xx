@@ -8,8 +8,9 @@
 
 namespace Mpcube\Wechat\Publics;
 
+use Mpcube\Common\Singleton;
 
-class Runtime
+class xxRuntime
 {
     use Singleton, MagicGetSet;
 

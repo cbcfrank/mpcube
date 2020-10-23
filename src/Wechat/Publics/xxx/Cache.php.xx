@@ -8,7 +8,7 @@ use Doctrine\Common\Cache\FilesystemCache;
 use Doctrine\Common\Cache\MemcacheCache;
 use Doctrine\Common\Cache\RedisCache;
 
-trait Cache
+trait xxCache
 {
     protected $cache_driver_current = self::CACHE_DRIVER_FILESYSTEM;
     protected $cache_driver_list = array(self::CACHE_DRIVER_FILESYSTEM, self::CACHE_DRIVER_MEMECACHE, self::CACHE_DRIVER_REDIS);

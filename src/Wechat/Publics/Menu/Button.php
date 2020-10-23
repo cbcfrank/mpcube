@@ -8,7 +8,8 @@
 
 namespace Mpcube\Wechat\Publics\Menu;
 
-use Mpcube\Wechat\Publics\Singleton;
+//use Mpcube\Wechat\Publics\Singleton;
+use Mpcube\Common\Singleton;
 
 /**
  * 自定义菜单接口可实现多种类型按钮

@@ -2,13 +2,18 @@
 
 namespace Mpcube\Wechat\Publics;
 
-class AccessToken
+use Mpcube\Common\ICache;
+use Mpcube\Common\Singleton;
+use Mpcube\Common\Common;
+use Mpcube\Common\Cache;
+
+class AccessToken implements ICache
 {
     use Common, Singleton, Cache;
 
-    const CACHE_DRIVER_FILESYSTEM = 'Filesystem';
-    const CACHE_DRIVER_MEMECACHE = 'Memecache';
-    const CACHE_DRIVER_REDIS = 'Redis';
+//    const CACHE_DRIVER_FILESYSTEM = 'Filesystem';
+//    const CACHE_DRIVER_MEMECACHE = 'Memecache';
+//    const CACHE_DRIVER_REDIS = 'Redis';
 
     public function getToken($appid, $appsecret)
     {

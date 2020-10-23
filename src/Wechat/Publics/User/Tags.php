@@ -1,8 +1,10 @@
 <?php
 namespace Mpcube\Wechat\Publics\User;
 
-use Mpcube\Wechat\Publics\Common;
-use Mpcube\Wechat\Publics\Singleton;
+//use Mpcube\Wechat\Publics\Common;
+use Mpcube\Common\Common;
+//use Mpcube\Wechat\Publics\Singleton;
+use Mpcube\Common\Singleton;
 
 //用户标签管理
 class Tags

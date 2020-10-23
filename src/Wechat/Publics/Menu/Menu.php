@@ -2,8 +2,10 @@
 
 namespace Mpcube\Wechat\Publics\Menu;
 
-use Mpcube\Wechat\Publics\Common;
-use Mpcube\Wechat\Publics\Singleton;
+//use Mpcube\Wechat\Publics\Common;
+use Mpcube\Common\Common;
+//use Mpcube\Wechat\Publics\Singleton;
+use Mpcube\Common\Singleton;
 
 class Menu
 {

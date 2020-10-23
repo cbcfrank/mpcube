@@ -2,12 +2,20 @@
 
 namespace Mpcube\Common;
 
+use Mpcube\Wechat\Publics\Errcode;
+
 trait Common
 {
     private $WechatApiBaseURL = 'https://api.weixin.qq.com/';
     private $WechatMpBaseURL = 'https://mp.weixin.qq.com/';
     private $WxworkApiBaseURL = 'https://qyapi.weixin.qq.com/';
     private $access_token = '';
+    private $errCodeObj = null;
+
+    private function _initialize()
+    {
+        $this->errCodeObj = new Errcode();
+    }
 
     public function setAccessToken($access_token)
     {
@@ -17,7 +25,7 @@ trait Common
 
     private function httpRespToArray($resp='', array $params_remark_req=array(), array $params_remark_res=array())
     {
-        $arr = Errcode::parseErrcodeByString($resp);
+        $arr = $this->errCodeObj->parseErrcodeByString($resp);
 
         if (!empty($params_remark_req)) {
             $arr['_remark']['fields']['request'] = $params_remark_req;

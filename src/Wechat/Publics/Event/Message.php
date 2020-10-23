@@ -1,7 +1,8 @@
 <?php
 namespace Mpcube\Wechat\Publics\Event;
 
-use Mpcube\Wechat\Publics\Common;
+//use Mpcube\Wechat\Publics\Common;
+use Mpcube\Common\Common;
 use Mpcube\Wechat\Publics\Event\Observer\MsgEventObserver;
 use Mpcube\Wechat\Publics\Event\Observer\MsgImageObserver;
 use Mpcube\Wechat\Publics\Event\Observer\MsgLinkObserver;
@@ -10,7 +11,8 @@ use Mpcube\Wechat\Publics\Event\Observer\MsgShortVideoObserver;
 use Mpcube\Wechat\Publics\Event\Observer\MsgTextObserver;
 use Mpcube\Wechat\Publics\Event\Observer\MsgVideoObserver;
 use Mpcube\Wechat\Publics\Event\Observer\MsgVoiceObserver;
-use Mpcube\Wechat\Publics\Singleton;
+//use Mpcube\Wechat\Publics\Singleton;
+use Mpcube\Common\Singleton;
 
 class Message extends Subject
 {

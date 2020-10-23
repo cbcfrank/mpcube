@@ -1,17 +1,22 @@
 <?php
 namespace Mpcube\Wechat\Publics\Web;
 
-use Mpcube\Wechat\Publics\Cache;
-use Mpcube\Wechat\Publics\Common;
-use Mpcube\Wechat\Publics\Singleton;
+use Mpcube\Common\ICache;
+//use Mpcube\Wechat\Publics\Cache;
+use Mpcube\Common\Cache;
+//use Mpcube\Wechat\Publics\Common;
+use Mpcube\Common\Common;
+use Mpcube\Wechat\Publics\Errcode;
+//use Mpcube\Wechat\Publics\Singleton;
+use Mpcube\Common\Singleton;
 
-class Oauth2
+class Oauth2 implements ICache
 {
     use Common, Singleton, Cache;
 
-    const CACHE_DRIVER_FILESYSTEM = 'Filesystem';
-    const CACHE_DRIVER_MEMECACHE = 'Memecache';
-    const CACHE_DRIVER_REDIS = 'Redis';
+//    const CACHE_DRIVER_FILESYSTEM = 'Filesystem';
+//    const CACHE_DRIVER_MEMECACHE = 'Memecache';
+//    const CACHE_DRIVER_REDIS = 'Redis';
 
     public function authorize($appid, $redirecturl, $snsapi_type=Oauth2Scope::snsapi_base, $state=array())
     {

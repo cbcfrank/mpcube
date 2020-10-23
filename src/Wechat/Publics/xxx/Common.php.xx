@@ -2,7 +2,7 @@
 
 namespace Mpcube\Wechat\Publics;
 
-trait Common
+trait xxCommon
 {
     private $WechatApiBaseURL = 'https://api.weixin.qq.com/';
     private $WechatMpBaseURL = 'https://mp.weixin.qq.com/';

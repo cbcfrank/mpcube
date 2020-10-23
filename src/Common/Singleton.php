@@ -10,6 +10,9 @@ trait Singleton
 
     private function __construct()
     {
+        if (method_exists($this, '_initialize')) {
+            $this->_initialize();
+        }
     }
 
     private function __clone()

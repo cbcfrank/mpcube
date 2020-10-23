@@ -1,9 +1,11 @@
 <?php
 namespace Mpcube\Wechat\Publics\Card;
 
-use Mpcube\Wechat\Publics\Common;
+//use Mpcube\Wechat\Publics\Common;
+use Mpcube\Common\Common;
 use Mpcube\Wechat\Publics\MagicGetSet;
-use Mpcube\Wechat\Publics\Singleton;
+//use Mpcube\Wechat\Publics\Singleton;
+use Mpcube\Common\Singleton;
 
 class Card
 {

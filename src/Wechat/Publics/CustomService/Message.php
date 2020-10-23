@@ -1,9 +1,11 @@
 <?php
 namespace Mpcube\Wechat\Publics\CustomService;
 
-use Mpcube\Wechat\Publics\Common;
+//use Mpcube\Wechat\Publics\Common;
+use Mpcube\Common\Common;
 use Mpcube\Wechat\Publics\Event\MessageType;
-use Mpcube\Wechat\Publics\Singleton;
+//use Mpcube\Wechat\Publics\Singleton;
+use Mpcube\Common\Singleton;
 
 class Message
 {

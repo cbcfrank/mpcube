@@ -2,7 +2,7 @@
 
 namespace Mpcube\Wechat\Publics;
 
-trait MagicGetSet
+trait xxMagicGetSet
 {
     public function __get($name)
     {
