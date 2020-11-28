@@ -31,6 +31,12 @@ class AccessToken implements ICache
             详情可参考微信公众平台文档 《获取access_token》 https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Get_access_token.html
      */
 
+    public function getTokenNoRefresh($appid)
+    {
+        $arr = json_decode($this->_cache->fetch("{$appid}_access_token"), true);
+        return isset($arr['access_token']) ? $arr['access_token'] : '';
+    }
+
     public function getToken($appid, $appsecret)
     {
         $arr = json_decode($this->_cache->fetch("{$appid}_access_token"), true);

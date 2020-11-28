@@ -12,6 +12,6 @@ class Runtime
 {
     use Singleton, MagicGetSet;
 
-    protected $dir = __DIR__.'../../../runtime/';
+    protected $dir = __DIR__.'/../../runtime/';
 
 }

@@ -1,6 +1,8 @@
 <?php
 namespace Mpcube\Wechat\Publics;
 
+use Mpcube\Common\Cache;
+use Mpcube\Common\Common;
 use Mpcube\Common\Singleton;
 
 class JsApiTicket
@@ -10,6 +12,12 @@ class JsApiTicket
     const CACHE_DRIVER_FILESYSTEM = 'Filesystem';
     const CACHE_DRIVER_MEMECACHE = 'Memecache';
     const CACHE_DRIVER_REDIS = 'Redis';
+
+    public function getJsApiTicketNoRefresh($appid)
+    {
+        $arr = json_decode($this->_cache->fetch("{$appid}_jsapi_ticket"), true);
+        return isset($arr['ticket']) ? $arr['ticket'] : '';
+    }
 
     public function getJsApiTicket($appid)
     {

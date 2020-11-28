@@ -62,6 +62,20 @@ trait Cache
         return false;
     }
 
+    //直接导入redis实例
+    public function setRedis(object $redis)
+    {
+        if ($this->getCacheDriver()==self::CACHE_DRIVER_REDIS) {
+
+            $this->_cache = new RedisCache();
+            $this->_cache->setRedis($redis);
+
+            return $this;
+        }
+        return false;
+    }
+
+    //使用新建redis连接的方式
     public function setRedisConn($host='', $port='', $password='', $timeout=0.0)
     {
         if ($this->getCacheDriver()==self::CACHE_DRIVER_REDIS) {

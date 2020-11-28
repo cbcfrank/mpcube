@@ -15,6 +15,12 @@ class AccessToken implements ICache
 //    const CACHE_DRIVER_MEMECACHE = 'Memecache';
 //    const CACHE_DRIVER_REDIS = 'Redis';
 
+    public function getTokenNoRefresh($appid)
+    {
+        $arr = json_decode($this->_cache->fetch("{$appid}_access_token"), true);
+        return isset($arr['access_token']) ? $arr['access_token'] : '';
+    }
+
     public function getToken($appid, $appsecret)
     {
         $arr = json_decode($this->_cache->fetch("{$appid}_access_token"), true);

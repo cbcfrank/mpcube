@@ -1,9 +1,7 @@
 <?php
 namespace Mpcube\Wechat\Publics\Web;
 
-//use Mpcube\Wechat\Publics\Common;
 use Mpcube\Common\Common;
-//use Mpcube\Wechat\Publics\Singleton;
 use Mpcube\Common\Singleton;
 
 class JssdkConfig
