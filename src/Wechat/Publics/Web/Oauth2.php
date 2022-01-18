@@ -43,6 +43,15 @@ class Oauth2 implements ICache
         return $arr;
     }
 
+    public function getFullWebAccessTokenAndOpenid($appid, $appsecret, $code, &$openid=null, &$scope=null)
+    {
+        $arr = $this->getFullWebAccessToken($appid, $appsecret, $code);
+
+        $openid = $arr['openid'];
+        $scope = $arr['scope'];
+        return $arr['access_token'];
+    }
+
     //刷新access_token（如果需要）
     public function refreshToken($appid, $refresh_token)
     {

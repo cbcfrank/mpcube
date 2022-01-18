@@ -62,7 +62,7 @@ trait Cache
         return false;
     }
 
-    //Ö±½Óµ¼ÈëredisÊµÀý
+    //ç›´æŽ¥å¯¼å…¥rediså®žä¾‹
     public function setRedis(object $redis)
     {
         if ($this->getCacheDriver()==self::CACHE_DRIVER_REDIS) {
@@ -75,7 +75,7 @@ trait Cache
         return false;
     }
 
-    //Ê¹ÓÃÐÂ½¨redisÁ¬½ÓµÄ·½Ê½
+    //ä½¿ç”¨æ–°å»ºredisè¿žæŽ¥çš„æ–¹å¼
     public function setRedisConn($host='', $port='', $password='', $timeout=0.0)
     {
         if ($this->getCacheDriver()==self::CACHE_DRIVER_REDIS) {

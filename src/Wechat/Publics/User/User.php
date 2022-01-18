@@ -45,6 +45,11 @@ class User
         return $this;
     }
 
+    public function getUserList()
+    {
+        return $this->_user_list;
+    }
+
     public function clearUserList()
     {
         $this->_user_list = array();

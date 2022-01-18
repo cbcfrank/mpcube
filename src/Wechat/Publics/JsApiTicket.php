@@ -26,10 +26,14 @@ class JsApiTicket
         if (!is_array($arr) || (isset($arr['next_time']) && (time()>$arr['next_time']))) {
             $url = $this->WechatApiBaseURL."cgi-bin/ticket/getticket?type=jsapi&access_token=$this->access_token";
             $arr = json_decode($this->curlGet($url), true);
-            $arr['next_time'] = time() + ceil($arr['expires_in'] * 2 / 3);
-            $this->_cache->save("{$appid}_jsapi_ticket", json_encode($arr));
+            $left_time = ceil($arr['expires_in'] * 2 / 3);
+            if (!is_integer($left_time) || !($left_time>0)) $left_time = 2400;
+            $arr['next_time'] = time() + $left_time;
+            $this->_cache->save("{$appid}_jsapi_ticket", json_encode($arr), $left_time);
+//            $arr['next_time'] = time() + ceil($arr['expires_in'] * 2 / 3);
+//            $this->_cache->save("{$appid}_jsapi_ticket", json_encode($arr));
         }
 
-        return $arr['ticket'];
+        return isset($arr['ticket']) ? $arr['ticket'] : '';
     }
 }

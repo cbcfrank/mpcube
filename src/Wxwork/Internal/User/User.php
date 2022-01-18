@@ -14,8 +14,8 @@ class User
     public function get($userid)
     {
         $url = $this->WxworkApiBaseURL.'cgi-bin/user/get?access_token='.$this->access_token.'&userid='.$userid;
-var_dump($url);
-var_dump($this->curlGet($url));
+//var_dump($url);
+//var_dump($this->curlGet($url));
         return $this->httpRespToArray($this->curlGet($url), ParamsRemark::USER_GET_REQ, ParamsRemark::USER_GET_RES);
     }
 //
