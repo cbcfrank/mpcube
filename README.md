@@ -9,20 +9,27 @@
 ```text
 ├── src  //源代码
 │   ├── Wechat //微信端
-│   │    └── Publics //公众号
-│   │         ├── Menu //菜单相关功能
-│   │         │    ├─ ParamsRemark.php    //参数说明
-│   │         │    ├─ Menu.php            //操作对象
-│   │         │    └─ xxxxType.php        //枚举类
-│   │         ├── ... //其他相关功能
-│   │         ├── AccessToken.php  //公众号全局获取access_token类
-│   │         ├── Common.php       //通用类方法 trait
-│   │         ├── Errcode.php      //错误码类
-│   │         ├── IPList.php       //微信服务器白名单获取类
-│   │         ├── MagicGetSet.php  //魔术方法 trait
-│   │         ├── Runtime.php      //运行时函数
-│   │         └── Singleton.php    //单例方法 trait
-│   │
+│   │    ├── Publics //公众号
+│   │    │     ├── Menu //菜单相关功能
+│   │    │     │    ├─ ParamsRemark.php    //参数说明
+│   │    │     │    ├─ Menu.php            //操作对象
+│   │    │     │    └─ xxxxType.php        //枚举类
+│   │    │     ├── ... //其他相关功能
+│   │    │     ├── AccessToken.php  //公众号全局获取access_token类
+│   │    │     ├── Common.php       //通用类方法 trait
+│   │    │     ├── Errcode.php      //错误码类
+│   │    │     ├── IPList.php       //微信服务器白名单获取类
+│   │    │     ├── MagicGetSet.php  //魔术方法 trait
+│   │    │     ├── Runtime.php      //运行时函数
+│   │    │     └── Singleton.php    //单例方法 trait
+│   │    │ 
+│   │    └── Miniapp //小程序
+|   |          ├── Auth             //登录
+|   |          ├── NearbyPoi        //附近的小程序
+|   |          ├── Phonenumber      //手机号码
+|   |          ├── UniformMessage   //统一服务消息
+|   |          └── Wxacode          //小程序码
+|   |          
 │   ├── Wepay //微信支付
 │   │    ├── Qrcode  //付款码支付
 │   │    ├── Jsapi   //JSAPI支付
