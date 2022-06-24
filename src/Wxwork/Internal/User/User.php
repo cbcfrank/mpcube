@@ -10,6 +10,8 @@ class User
 
     private $_user_list = array();
 
+    // todo 创建成员
+
     //读取成员
     public function get($userid)
     {
@@ -17,6 +19,19 @@ class User
 //var_dump($url);
 //var_dump($this->curlGet($url));
         return $this->httpRespToArray($this->curlGet($url), ParamsRemark::USER_GET_REQ, ParamsRemark::USER_GET_RES);
+    }
+
+    // todo 更新成员
+    // todo 删除成员
+    // todo 批量删除成员
+
+    //获取部门成员
+    public function simpleList($departmentId, $fetchChild=0)
+    {
+        $url = $this->WxworkApiBaseURL.'cgi-bin/user/simplelist?access_token='.$this->access_token.'&department_id='.$departmentId.'&fetch_child='.$fetchChild;
+//var_dump($url);
+//var_dump($this->curlGet($url));
+        return $this->httpRespToArray($this->curlGet($url), ParamsRemark::USER_SIMPLELIST_REQ, ParamsRemark::USER_SIMPLELIST_RES);
     }
 //
 //    //设置用户备注名
