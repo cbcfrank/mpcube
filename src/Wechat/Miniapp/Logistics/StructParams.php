@@ -23,9 +23,9 @@ class StructParams
     area	    string	    	是	发件人区/县，比如："海珠区"，不超过64字节
     address	    string	    	是	发件人详细地址，比如："XX路 XX 号XX大厦XX"，不超过512字节
      */
-    public function senderOfAddOrder($name, $tel, $mobile, $company, $post_code, $country, $province, $city, $area, $address)
+    public function senderOfAddOrder($name, $tel, $mobile, $company, $address, $post_code=null, $country=null, $province=null, $city=null, $area=null)
     {
-        $this->_params['sender'] = compact('name', 'tel', 'mobile', 'company', 'post_code', 'country', 'province', 'city', 'area', 'address');
+        $this->_params['sender'] = array_filter(compact('name', 'tel', 'mobile', 'company', 'post_code', 'country', 'province', 'city', 'area', 'address'));
         return $this;
     }
 
@@ -42,9 +42,9 @@ class StructParams
     area	    string	    	是	收件人区/县，比如："天河区"，不超过64字节
     address	    string		    是	收件人详细地址，比如："XX路 XX 号XX大厦XX"，不超过512字节
     */
-    public function receiverOfAddOrder($name, $tel, $mobile, $company, $post_code, $country, $province, $city, $area, $address)
+    public function receiverOfAddOrder($name, $tel, $mobile, $company, $address, $post_code=null, $country=null, $province=null, $city=null, $area=null)
     {
-        $this->_params['receiver'] = compact('name', 'tel', 'mobile', 'company', 'post_code', 'country', 'province', 'city', 'area', 'address');
+        $this->_params['receiver'] = array_filter(compact('name', 'tel', 'mobile', 'company', 'post_code', 'country', 'province', 'city', 'area', 'address'));
         return $this;
     }
 
