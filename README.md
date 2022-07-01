@@ -28,6 +28,7 @@
 |   |          ├── NearbyPoi        //附近的小程序
 |   |          ├── Phonenumber      //手机号码
 |   |          ├── UniformMessage   //统一服务消息
+|   |          ├── Logistics        //物流服务
 |   |          └── Wxacode          //小程序码
 |   |          
 │   ├── Wepay //微信支付
