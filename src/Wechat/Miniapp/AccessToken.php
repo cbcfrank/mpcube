@@ -41,11 +41,16 @@ class AccessToken implements ICache
     {
         $arr = json_decode($this->_cache->fetch("{$appid}_access_token"), true);
 
-        if (!is_array($arr) || (isset($arr['next_time']) && (time()>$arr['next_time']))) {
+        if (!is_array($arr) || (isset($arr['next_time']) && (time()>=$arr['next_time']))) {
             $url = $this->WechatApiBaseURL."cgi-bin/token?grant_type=".GrantType::CLIENT_CREDENTIAL."&appid={$appid}&secret={$appsecret}";
             $arr = json_decode($this->curlGet($url), true);
+
+            if (!is_array($arr)) return '';
+            if (!isset($arr['expires_in']) || !isset($arr['access_token'])) return '';
+
             $left_time = ceil($arr['expires_in'] * 2 / 3);
-            if (!is_integer($left_time) || !($left_time>0)) $left_time = 2400;
+//            if (!is_integer($left_time) || !($left_time>0)) $left_time = 2400;
+            $left_time = $left_time>0 ? $left_time : 2400;
             $arr['next_time'] = time() + $left_time;
             $this->_cache->save("{$appid}_access_token", json_encode($arr), $left_time);
 //            $arr['next_time'] = time() + ceil($arr['expires_in'] * 2 / 3);

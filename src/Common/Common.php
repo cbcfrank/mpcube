@@ -7,6 +7,7 @@ use Mpcube\Wechat\Publics\Errcode;
 trait Common
 {
     private $WechatApiBaseURL = 'https://api.weixin.qq.com/';
+    private $WechatOpenBaseURL = 'https://open.weixin.qq.com/';
     private $WechatMpBaseURL = 'https://mp.weixin.qq.com/';
     private $WxworkApiBaseURL = 'https://qyapi.weixin.qq.com/';
     private $access_token = '';

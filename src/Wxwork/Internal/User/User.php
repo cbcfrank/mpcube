@@ -25,7 +25,13 @@ class User
     // todo 删除成员
     // todo 批量删除成员
 
-    //获取部门成员
+    /**
+     * 获取部门成员
+     * @link https://developer.work.weixin.qq.com/document/path/90201
+     * @param $departmentId
+     * @param int $fetchChild
+     * @return mixed
+     */
     public function simpleList($departmentId, $fetchChild=0)
     {
         $url = $this->WxworkApiBaseURL.'cgi-bin/user/simplelist?access_token='.$this->access_token.'&department_id='.$departmentId.'&fetch_child='.$fetchChild;
@@ -33,16 +39,22 @@ class User
 //var_dump($this->curlGet($url));
         return $this->httpRespToArray($this->curlGet($url), ParamsRemark::USER_SIMPLELIST_REQ, ParamsRemark::USER_SIMPLELIST_RES);
     }
-//
-//    //设置用户备注名
-//    public function infoUpdateRemark($openid, $remark)
-//    {
-//        $url = $this->WechatApiBaseURL.'cgi-bin/user/info/updateremark?access_token='.$this->access_token;
-//
-//        $arr = compact('openid', 'remark');
-//
-//        return $this->httpRespToArray($this->curlPost($url, $arr), ParamsRemark::USER_INFO_UPDATEREMARK_RES);
-//    }
+
+    /**
+     * 获取成员ID列表 （仅支持通过“通讯录同步secret”调用。）
+     * @link https://developer.work.weixin.qq.com/document/path/96067
+     * @param string $cursor
+     * @param int $limit
+     * @return mixed
+     */
+    public function listId($cursor='', $limit=200)
+    {
+        $url = $this->WxworkApiBaseURL.'cgi-bin/user/list_id?access_token='.$this->access_token;
+
+        $arr = compact('cursor', 'limit');
+
+        return $this->httpRespToArray($this->curlPost($url, $arr), ParamsRemark::USER_LISTID_REQ, ParamsRemark::USER_LISTID_RES);
+    }
 //
 //    //获取用户基本信息(UnionID机制)
 //    public function info($openid, $lang='zh_CN')

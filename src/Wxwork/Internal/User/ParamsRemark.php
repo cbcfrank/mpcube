@@ -8,12 +8,6 @@ class ParamsRemark
         'userid' => array('required'=>'是', 'memo'=>'成员UserID。对应管理端的帐号，企业内必须唯一。不区分大小写，长度为1~64个字节'),
     );
 
-    const USER_SIMPLELIST_REQ = array(
-        'access_token' => array('required'=>'是', 'memo'=>'调用接口凭据'),
-        'department_id' => array('required'=>'是', 'memo'=>'获取的部门id'),
-        'fetch_child' => array('required'=>'否', 'memo'=>'是否递归获取子部门下面的成员：1-递归获取，0-只获取本部门'),
-    );
-
     const USER_GET_RES = array(
         'errcode' => array('memo'=>'返回码'),
         'errmsg' => array('memo'=>'对返回码的文本描述内容'),
@@ -39,6 +33,12 @@ class ParamsRemark
         'address' => array('memo'=>'地址。'),
     );
 
+    const USER_SIMPLELIST_REQ = array(
+        'access_token' => array('required'=>'是', 'memo'=>'调用接口凭据'),
+        'department_id' => array('required'=>'是', 'memo'=>'获取的部门id'),
+        'fetch_child' => array('required'=>'否', 'memo'=>'是否递归获取子部门下面的成员：1-递归获取，0-只获取本部门'),
+    );
+
     const USER_SIMPLELIST_RES = array(
         'errcode' => array('memo'=>'返回码'),
         'errmsg' => array('memo'=>'对返回码的文本描述内容'),
@@ -47,6 +47,21 @@ class ParamsRemark
         'name' => array('memo'=>'成员名称，代开发自建应用需要管理员授权才返回；此字段从2019年12月30日起，对新创建第三方应用不再返回真实name，使用userid代替name，2020年6月30日起，对所有历史第三方应用不再返回真实name，使用userid代替name，后续第三方仅通讯录应用可获取，未返回名称的情况需要通过通讯录展示组件来展示名字'),
         'department' => array('memo'=>'成员所属部门列表。列表项为部门ID，32位整型'),
         'open_userid' => array('memo'=>'全局唯一。对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的，最多64个字节。仅第三方应用可获取'),
+    );
+
+    const USER_LISTID_REQ = array(
+        'access_token' => array('required'=>'是', 'memo'=>'调用接口凭据'),
+        'cursor' => array('required'=>'否', 'memo'=>'用于分页查询的游标，字符串类型，由上一次调用返回，首次调用不填'),
+        'limit' => array('required'=>'否', 'memo'=>'分页，预期请求的数据量，取值范围 1 ~ 10000'),
+    );
+
+    const USER_LISTID_RES = array(
+        'errcode' => array('memo'=>'返回码'),
+        'errmsg' => array('memo'=>'对返回码的文本描述内容'),
+        'next_cursor' => array('memo'=>'分页游标，下次请求时填写以获取之后分页的记录。如果该字段返回空则表示已没有更多数据'),
+        'dept_user' => array('memo'=>'用户-部门关系列表'),
+        'userid' => array('memo'=>'用户userid，当用户在多个部门下时会有多条记录'),
+        'department' => array('memo'=>'	用户所属部门'),
     );
 
 }

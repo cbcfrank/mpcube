@@ -14,6 +14,7 @@
 │   │    │     │    ├─ ParamsRemark.php    //参数说明
 │   │    │     │    ├─ Menu.php            //操作对象
 │   │    │     │    └─ xxxxType.php        //枚举类
+│   │    │     |
 │   │    │     ├── ... //其他相关功能
 │   │    │     ├── AccessToken.php  //公众号全局获取access_token类
 │   │    │     ├── Common.php       //通用类方法 trait
@@ -40,7 +41,11 @@
 │   │    ├── H5      //H5支付
 │   │    └── Face    //刷脸支付
 │   │
-│   └── Wxwork //企业微信
+│   ├── Wxwork //企业微信
+│        ├── Department      //通讯录管理-部门管理
+│        ├── User            //通讯录管理-用户管理
+│        ├── ExternalContact //客户联系
+│        └── Message         //消息推送
 │
 ├── runtime //运行时目录
 │  
